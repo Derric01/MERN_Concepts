@@ -35,7 +35,7 @@ const obj ={
 //execution context
 /*everytime a script or a function is invoked ,js creates
 a box(think of it like a memory space) to execute that code
-That box is ccalled execution context(EC) 
+That box is called execution context(EC) 
 | Type                                | What it is                              |
 | ----------------------------------- | --------------------------------------- |
 | 🌐 Global Execution Context (GEC)   | Created once when the script runs       |
