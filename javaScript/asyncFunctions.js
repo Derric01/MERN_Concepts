@@ -178,4 +178,159 @@ function debounce(fx,delay){
     };
 }
 
-const logg = debounce(()=>console.log("This is debounced!!"),1000);
+const log = debounce(()=>console.log("This is debounced!!"),1000);
+
+ /*Why Async Matters (Real World)
+JavaScript is single-threaded → it can only do one thing at a time.
+But your app needs to:
+
+Fetch data from APIs (React, Vue)
+
+Hit your MongoDB via Express
+
+Wait for users to type
+
+Handle file uploads, cloud requests
+
+Async lets you handle all this without freezing the app.*/
+//callback recap
+function greet(name,callback){
+    console.log("hello",name);
+    callback();
+}
+greet("Derric",()=>{
+    console.log("Welcome to java script!!");
+});
+
+
+//simulating async (api delay style)
+
+function fetchdata(callback){
+    setTimeout(()=>{
+        callback({id:1,name:"Derric"});
+    },1000);
+}
+
+fetchdata((data)=>{
+    console.log("Data fetched",data);
+});
+//callback hell
+
+getUser((user)=>{
+    getOrders(user.id,(orders)=>{
+        getdetails(orders[0].id,(details)=>{
+            console.log(details);
+        })
+    })
+})
+
+//we use promises to fix this !! callback !!
+const fetchData =()=>{
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve("Here is the data");
+        },1000);
+    });
+};
+fetchData().then(console.log)
+
+/*
+Promises — Reclaim Control
+🤯 What is a Promise really?
+A Promise is an object that represents a value that might be available in the future, and gives us the ability to register callbacks using .then() or .catch() instead of nesting.
+ */
+
+const promise = new Promise((resolve,reject)=>{
+    if(success ){
+        resolve(data);
+    }else{
+        reject(error);
+    }
+});
+
+fetchUserData()
+.then(user=>fetchCart(user.id))
+.then(cart=>fetchTotal(cart))
+.then(total=>crossOriginIsolated.log("Total:",total));
+//.catch(error=>console.error("error has occured:",error));
+
+
+//async and await flow
+
+async function getTotal(){
+    try{
+        const user = await fetchUserData();
+        const cart = await fetchCart(user.id);
+        const total = await fetchTotal(cart);
+        console.log("Total",total)
+    }catch(error){
+        console.error("Error has occurred:",error);
+    
+    }
+}  
+
+async function x(){
+    const data = await fetchData();
+}
+
+function x(){
+return y().then(data=>{
+    return data;
+});
+}
+/*🧪  Real-World MERN Applications
+  🛠 Express API: Serial Async
+  Client → GET /user/64a2a9 → Express route triggers
+↓
+req.params.id → "64a2a9"
+↓
+User.findById("64a2a9") → returns user object
+↓
+Post.find({ userId: user._id }) → returns array of posts
+↓
+res.json({ user, posts }) → sends response back to client
+
+*/
+app.get("user/:id",async(req,res)=>{
+try{
+    const user = await UserActivation.findById(req.params.id);
+    const posts = await post.find({userId:user._id});
+    res.json({user,posts});
+}catch(error){
+    res.status(500).json({
+        error:"an error has occurred!!!"
+    });
+}
+})
+
+//parallel execution with promise.all()
+
+const [user,cart] = await promise.all([
+    user.findById(req.params.id),
+    cart.find({userId:req.params.id}),
+])
+
+//custom retry function pro level pattern
+
+async function retry(fn,retries = 3){
+    while(retries--){
+        try{
+            return await fn();
+        }catch(e){
+            console.log("retrying !!");
+        }
+    }
+    throw new error("All retries failed!!");
+}
+
+
+function delay(ms){
+    return new Promise(resolve =>setTimeout(resolve,ms));
+}
+
+async function animate(){
+    for(let i =1; i<=3; i++){
+        console.log(`Step ${i}`);
+        await delay(1000); // Wait for 1 second 
+    }
+}
