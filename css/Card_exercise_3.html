@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryuken Ishida Card</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            width: 320px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .tags {
+            font-size: 14px;
+            color: gray;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .tag {
+            background-color: #ddd;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .description {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background: linear-gradient(to right, #007BFF, #0056b3);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: linear-gradient(to right, #0056b3, #007BFF);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="ryuken_017.jpg" alt="Ryuken Ishida">
+        <div class="tags">
+            <span class="tag">Anime</span>
+            <span class="tag">Fiction</span>
+        </div>
+        <div class="title">Ryuken Ishida</div>
+        <div class="description">
+            This time, we are going to make a legendary comeback, defying all odds, rising like a phoenix from the ashes.
+        </div>
+        <a href="#" class="btn">Read More</a>
+    </div>
+</body>
+</html>
