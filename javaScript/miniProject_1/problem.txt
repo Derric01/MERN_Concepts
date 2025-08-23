@@ -1,0 +1,10 @@
+💻 Mini Project Task (Today Only)
+🔨 Build a Dynamic User Card Renderer
+
+1.Create an array of user objects
+
+2.Use forEach to loop and create DOM cards
+
+3.Track click count using closures
+
+4.Bonus: Filter by age using .filter()

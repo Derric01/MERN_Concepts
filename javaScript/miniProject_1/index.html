@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Card Renderer</title>
+        <style>
+            body{
+                font-family:sans-serif;
+                background:#f2f2f2;
+                padding:20px;
+            }
+            .card{
+                background:white;
+                padding:15px;
+                border-radius:10px;
+                margin:10px 0;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+            }
+            .card h3{
+                margin:0 0 5px 0;
+
+            }
+            .card button{
+                margin-top:10px;
+            }
+        </style>
+        <body>
+            <h1>👥 User Cards</h1>
+            <div>
+                <label for="ageFilter">Filter by age >=</label>
+                <input type="number" id="ageFilter" value="0"/>
+                <button id="filterBtn">Apply Filter</button>
+            </div>
+            <div id="cardContainer"></div>
+            <script src="script.js"></script>
+        </body>
+    </head>
+</html>
