@@ -110,3 +110,24 @@ function foo(){
 const  fin = foo();
 
 fin();
+
+let greeting = "hey there";
+ let name = "derric";
+
+ function sayhi(){
+    console.log(greeting +","+ name);
+ }
+ sayhi();
+
+ let mypointts = 12;
+
+ function increment (){
+    mypointts++;
+
+ }
+
+ increment();
+ increment();
+
+
+ console.log(mypointts);
